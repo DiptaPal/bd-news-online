@@ -6,87 +6,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bd News Online</title>
 
-    <!-- Tailwind Elements link up -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+    <!-- Flowbite link up -->
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
+    <!-- tailwind link up -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-    tailwind.config = {
-        theme: {
-        extend: {
-            fontFamily: {
-                sans: ['Inter', 'sans-serif'],
-                },
-            },
-            colors:{
-                'mainColor': '#5d5fef'
-            }
-        }
-    }
-    </script>
     
 
     <!-- fontawesome icon link up -->
     <script src="https://kit.fontawesome.com/abe24aa20a.js" crossorigin="anonymous"></script>
 
 </head>
-<body class="bg-gray-100">
-    <!-- navbar start -->
-    <nav class="relative w-full flex flex-wrap items-center justify-between py-4 text-gray-500 hover:text-gray-700 focus:text-gray-700 navbar navbar-expand-lg navbar-light w-10/12 mx-auto mt-4">
-        <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
-            <button class="navbar-toggler text-gray-500 border-0 hover:shadow-none hover:no-underline py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" class="w-6" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                    <path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z">
-                    </path>
-                </svg>
-            </button>
-            <div class="collapse navbar-collapse flex-grow items-center" id="navbarSupportedContent">
-                <!-- Left links -->
-                <ul class="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
-                    <li class="nav-item p-2">
-                        <a class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0 font-extrabold text-2xl" href="#"><span class="py-2 px-3 bg-mainColor text-white rounded">BD News</span> Online</a>
-                    </li>
-                </ul>
-                <!-- Left links -->
-            </div>
-            <!-- Collapsible wrapper -->
-
-            <!-- Right elements -->
-            <div class="flex items-center relative">
-                <!-- Icon -->
-                <a class="text-gray-500 hover:text-gray-700 focus:text-mainColor mr-4 font-extrabold text-2xl focus:underline decoration-mainColor decoration-4 focus:outline-none px-4" href="#" autofocus>
-                   News 
+<body class="bg-gray-100 text-gray-400">
+    <!-- header section start -->
+    <header>
+        <!-- navbar start -->
+        
+        <nav class="border-gray-200 px-2 sm:px-4 py-2.5 rounded mt-4 w-10/12 mx-auto">
+            <div class="container flex flex-wrap justify-between items-center mx-auto">
+                <a href="#" class="flex items-center font-semibold text-2xl text-indigo-600 mb-4 sm:mb-0 mx-auto md:mx-0">
+                    <span class="self-center whitespace-nowrap"><span class="bg-indigo-700 text-white px-3 py-2 rounded">BD News</span> Online</span>
                 </a>
-                <a class="text-gray-500 hover:text-gray-700 focus:text-mainColor mr-4 font-extrabold text-2xl focus:underline decoration-mainColor decoration-4 px-4" href="#">
-                   Blog 
-                </a>
-                <div class="dropdown relative">
-                    <a class="dropdown-toggle flex items-center hidden-arrow" href="#" id="dropdownMenuButton2" role="button">
-                        <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full" style="height: 50px; width: 50px" alt="" loading="lazy" />
-                    </a>
+                <div class="flex items-center md:order-2  mx-auto md:mx-0">
+                    <div class="font-semibold text-2xl pr-4">
+                        <div class="hidden justify-between items-center w-full md:flex md:w-auto md:order-1 " id="mobile-menu-2">
+                            <ul class="flex flex-col p-4 md:flex-row">
+                                <li class="p-4">
+                                    <a href="#" class="block text-gray-400 focus:text-indigo-600 focus:underline decoration-2 focus:outline-none" aria-current="page" autofocus>News</a>
+                                </li>
+                                <li class="p-4">
+                                    <a href="#" class="block text-gray-400 focus:text-indigo-600 focus:underline decoration-2">Blog</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                
+                    <button data-collapse-toggle="mobile-menu-2" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 mr-8" aria-controls="mobile-menu-2" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <img class="w-12 h-12 rounded-full" src="https://mdbootstrap.com/img/new/avatars/2.jpg" alt="user photo">
                 </div>
             </div>
-            <!-- Right elements -->
+        </nav>
+  
+        <!-- navbar end -->
+        <hr class="w-11/12 mx-auto my-4 border-none" style="height: 2px; background-color: #cdcdcd;">
+        <!-- catagory section start -->
+        <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-8 gap-4 lg:gap-0 text-2xl text-gray-500 font-medium w-10/12 mx-auto my-12" id="catagory-container">
+            
         </div>
-    </nav>
-    <!-- navbar end -->
-    <hr class="w-11/12 mx-auto my-4 border-none" style="height: 2px; background-color: #cdcdcd;">
+        <!-- catagory section end -->
+    </header>
+    <!-- header section end -->
+   
 
     <!-- main section start -->
-    <main>
-
+    <main class="w-10/12 mx-auto">
+        <section class="mb-20">
+            <div class="bg-white rounded-lg mb-12">
+                <p class="px-6 py-6 text-2xl text-black font-semibold" id="catagory-number">4 items found for category Entertainment</p>
+            </div>
+            <div class="flex justify-between">
+                <div>
+                    <span class="text-2xl text-black font-medium pr-6">Sort By View:</span>
+                    <button id="dropdownDefault" data-dropdown-toggle="dropdown" class="text-gray-400 bg-white rounded-lg text-xl font-semibold px-8 py-2.5 text-center inline-flex items-center " type="button">Default<svg class="ml-2 w-8 h-8" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                    <div id="dropdown" class="hidden z-10 w-44 bg-indigo-700 rounded divide-y divide-gray-100 shadow">
+                        <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
+                          <li>
+                            <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Top News</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Current News</a>
+                          </li>
+                          <li>
+                            <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Breaking News</a>
+                          </li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <button class="bg-indigo-700 text-2xl border-2 border-indigo-700 focus:outline-none py-3 px-6 rounded text-white mr-4">Today’s Pick</button>
+                    <button class="text-indigo-700 text-2xl border-2 border-indigo-700 focus:outline-none py-3 px-6 rounded">Trending</button>
+                </div>
+            </div>
+        </section>
+        <!-- card section start -->
+        <section>
+            <a href="#" class="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                <img class="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="/docs/images/blog/image-4.jpg" alt="">
+                <div class="flex flex-col justify-between p-4 leading-normal">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                </div>
+            </a>
+        </section>
+        <!-- card section end -->
     </main>
     <!-- main section end -->
-    
+
     <!-- footer section start -->
 
     <!-- footer section end -->
 
 
 
-    <!-- tailwind element javascript file link up -->
-    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+    <!-- Flowbite javascript file link up -->
+    <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
     <!-- main javascipt file link up -->
     <script src="./js/app.js"></script>
 </body>
