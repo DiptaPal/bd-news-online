@@ -32,7 +32,7 @@ const displayLoadCatagory = (data,catagoryName) =>{
     else{
         catagoryNumber.innerText = `No data found for category ${catagoryName}`
     }
-    
+    const cardContainer =document.getElementById('card-container');
     
 
     displaySpinner(false);
