@@ -56,7 +56,7 @@ const displayLoadCatagory = (datas,catagoryName) =>{
         divCard.classList.add('flex', 'flex-col', 'items-center', 'bg-white', 'rounded-3xl', 'border', 'shadow-md', 'lg:flex-row', 'mb-8');
         divCard.innerHTML = `
         <img class="object-cover rounded-lg w-full sm:w-auto sm:h-96 m-0 sm:m-4" src="${data.thumbnail_url}" alt="">
-        <div class="flex flex-col justify-between p-16 lg:pl-4 leading-normal">
+        <div class="flex flex-col justify-between p-8 lg:p-16 lg:pl-4 leading-normal">
             <h1 class="mb-2 text-3xl font-bold tracking-tight text-black">${data.title}</h1>
             <p class="mb-3 text-lg font-normal text-gray-400">${data.details.length > 300 ? data.details.slice(0,300) + '...' : data.details}</p>
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 justify-between items-center">
@@ -75,7 +75,7 @@ const displayLoadCatagory = (datas,catagoryName) =>{
                         <p class="text-sm font-bold text-gray-600 ml-2">${data.total_view ? data.total_view : "No Data Found"}</p>
                     </div>
                 </div>
-                <div class="text-center">
+                <div class="">
                     <div class="text-base">
                         <i class="fa-regular fa-star-half-stroke"></i>
                         <i class="fa-regular fa-star"></i>
