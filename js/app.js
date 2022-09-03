@@ -23,7 +23,7 @@ const loadCatagory = (id,catagoryName) =>{
     .catch(error => console.log(error))
 }
 const displayLoadCatagory = (datas,catagoryName) =>{
-    console.log(datas);
+    // console.log(datas);
     const catagoryNumber = document.getElementById('catagory-number');
 
     if(datas.length > 0){
@@ -32,14 +32,16 @@ const displayLoadCatagory = (datas,catagoryName) =>{
     else{
         catagoryNumber.innerText = `No data found for category ${catagoryName}`
     }
+    
     const cardContainer =document.getElementById('card-container');
     cardContainer.innerHTML = '';
     datas.forEach(data => {
-        console.log(data);
+        // console.log(data);
+        
         const divCard = document.createElement('div');
         divCard.classList.add('flex', 'flex-col', 'items-center', 'bg-white', 'rounded-lg', 'border', 'shadow-md', 'lg:flex-row', 'mb-8');
         divCard.innerHTML = `
-        <img class="object-cover w-full rounded-lg lg:w-72 lg:h-full  m-0 lg:m-4" src="${data.thumbnail_url}" alt="">
+        <img class="object-cover w-full rounded-lg lg:w-80 lg:h-full  m-0 lg:m-4" src="${data.thumbnail_url}" alt="">
         <div class="flex flex-col justify-between p-16 lg:pl-4 leading-normal">
             <h1 class="mb-2 text-3xl font-bold tracking-tight text-black">${data.title}</h1>
             <p class="mb-3 text-lg font-normal text-gray-400">${data.details.length > 340 ? data.details.slice(0,340) + '...' : data.details}</p>
@@ -78,8 +80,7 @@ const displayLoadCatagory = (datas,catagoryName) =>{
         </div>
         `
         cardContainer.appendChild(divCard);
-    })
-    
+    });
 
     displaySpinner(false);
 }
