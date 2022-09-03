@@ -173,13 +173,13 @@
                             function logThis() {<br>
                                 &nbsp;&nbsp;console.log(this);<br>
                               }<br>
-                              document.addEventListener('click', logThis);<br>
+                              document.addEventListener ('click', logThis);<br>
                               // `this` refers to the document<br>
                               
                               const logThisArrow = () => {<br>
                                 &nbsp;&nbsp;console.log(this);<br>
                               };<br>
-                              document.addEventListener('click', logThisArrow);<br>
+                              document.addEventListener ('click', logThisArrow);<br>
                               // `this` refers to the global object<br>
                         </code>
                     </div><br>
@@ -385,7 +385,5 @@
 
     <!-- Flowbite javascript file link up -->
     <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
-    <!-- main javascipt file link up -->
-    <script src="./js/app.js"></script>
 </body>
 </html>
