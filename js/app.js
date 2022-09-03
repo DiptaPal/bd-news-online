@@ -32,49 +32,49 @@ const displayLoadCatagory = (datas,catagoryName) =>{
     else{
         catagoryNumber.innerText = `No data found for category ${catagoryName}`
     }
-    
+
     const cardContainer =document.getElementById('card-container');
+    datas.sort((p, q) => q.total_view - p.total_view);
     cardContainer.innerHTML = '';
     datas.forEach(data => {
         // console.log(data);
         
         const divCard = document.createElement('div');
-        divCard.classList.add('flex', 'flex-col', 'items-center', 'bg-white', 'rounded-lg', 'border', 'shadow-md', 'lg:flex-row', 'mb-8');
+        divCard.classList.add('flex', 'flex-col', 'items-center', 'bg-white', 'rounded-3xl', 'border', 'shadow-md', 'lg:flex-row', 'mb-8');
         divCard.innerHTML = `
-        <img class="object-cover w-full rounded-lg lg:w-80 lg:h-full  m-0 lg:m-4" src="${data.thumbnail_url}" alt="">
+        <img class="object-cover rounded-lg w-full md:w-auto md:h-96 m-0 md:m-4" src="${data.thumbnail_url}" alt="">
         <div class="flex flex-col justify-between p-16 lg:pl-4 leading-normal">
             <h1 class="mb-2 text-3xl font-bold tracking-tight text-black">${data.title}</h1>
-            <p class="mb-3 text-lg font-normal text-gray-400">${data.details.length > 340 ? data.details.slice(0,340) + '...' : data.details}</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 items-center mt-6">
-                <div class="grid grid-cols-1 2xl:grid-cols-2 justify-items-center 2xl:justify-items-stretch items-center">
-                    <div class="flex items-center">
-                        <img src="${data.author.img}" class="w-10 h-10 rounded-lg" alt="">
-                        <div class="pl-4">
-                            <p class="text-black text-lg font-semibold">${data.author.name ? data.author.name : 'No Data Found'}</p>
-                            <p class="text-lg">${data.author.published_date}</p>
-                        </div>
+            <p class="mb-3 text-lg font-normal text-gray-400">${data.details.length > 300 ? data.details.slice(0,300) + '...' : data.details}</p>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 justify-between items-center">
+                <div class="flex flex-wrap items-center space-x-4">
+                    <div class="flex-shrink-0">
+                        <img class="w-8 h-8 rounded-full" src="${data.author.img}" alt="Author Image">
                     </div>
-                    <div class="flex text-2xl font-bold items-center p-8 2xl:p-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        <p class="pl-2 text-black">${data.total_view ? data.total_view : 'No Data Found'}</p>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-medium text-gray-900">${data.author.name}</p>
+                        <p class="space-x-1 text-sm text-gray-500">${data.author.published_date}</p>
                     </div>
                 </div>
-                <div class="grid grid-cols-1 2xl:grid-cols-2 justify-items-center 2xl:justify-items-stretch items-center mt-8 md:mt-0">
-                    <div class="text-2xl">
+                <div class="text-center">
+                    <div class="flex items-center justify-end lg:justify-center">
+                        <i class="fa-regular fa-eye"></i>
+                        <p class="text-sm font-bold text-gray-600 ml-2">300</p>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="text-base">
                         <i class="fa-regular fa-star-half-stroke"></i>
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                     </div>
-                    <div class="flex p-8 2xl:p-0">
-                        <div>
-                            <i class="fa-solid fa-arrow-right text-indigo-700 text-2xl"></i>
-                        </div>
-                    </div>
+                </div>
+                <div class="text-right">
+                    <label for="my-modal-3">
+                        <i class="fa-solid fa-arrow-right-long text-blue-600 cursor-pointer"></i>
+                    </label>
                 </div>
             </div>
         </div>
@@ -93,5 +93,5 @@ const displaySpinner = (showSpinner) =>{
         spinner.classList.add('hidden');
     }
 }
-
+loadCatagory(1,'Breaking News');
 loadCatagories();
