@@ -1,9 +1,11 @@
+//catagory types data fetching
 const loadCatagories = () =>{
     fetch('https://openapi.programming-hero.com/api/news/categories')
     .then(res => res.json())
     .then(data => displayCatagories(data.data.news_category))
     .catch(error => console.log(error))
 }
+//display catagory
 const displayCatagories = (catagories) =>{
     const catagoryContainer = document.getElementById('catagory-container');
     catagories.forEach(data =>{
@@ -14,7 +16,10 @@ const displayCatagories = (catagories) =>{
         catagoryContainer.appendChild(catagory);
     })
 }
+
+//data fetching after selecting catagory type
 const loadCatagory = (id,catagoryName) =>{
+    //show spinner
     displaySpinner(true);
     const url = `https://openapi.programming-hero.com/api/news/category/0${id}`;
     fetch(url)
@@ -22,6 +27,8 @@ const loadCatagory = (id,catagoryName) =>{
     .then(data => displayLoadCatagory(data.data,catagoryName))
     .catch(error => console.log(error))
 }
+
+//display news after selecting catagory type
 const displayLoadCatagory = (datas,catagoryName) =>{
     // console.log(datas);
     const catagoryNumber = document.getElementById('catagory-number');
@@ -37,8 +44,6 @@ const displayLoadCatagory = (datas,catagoryName) =>{
     datas.sort((p, q) => q.total_view - p.total_view);
     cardContainer.innerHTML = '';
     datas.forEach(data => {
-        // console.log(data);
-        
         const divCard = document.createElement('div');
         divCard.classList.add('flex', 'flex-col', 'items-center', 'bg-white', 'rounded-3xl', 'border', 'shadow-md', 'lg:flex-row', 'mb-8');
         divCard.innerHTML = `
@@ -52,14 +57,14 @@ const displayLoadCatagory = (datas,catagoryName) =>{
                         <img class="w-8 h-8 rounded-full" src="${data.author.img}" alt="Author Image">
                     </div>
                     <div class="flex-1 min-w-0">
-                        <p class="text-sm font-medium text-gray-900">${data.author.name}</p>
+                        <p class="text-sm font-medium text-gray-900">${data.author.name ? data.author.name : "No Data Found"}</p>
                         <p class="space-x-1 text-sm text-gray-500">${data.author.published_date}</p>
                     </div>
                 </div>
                 <div class="text-center">
                     <div class="flex items-center justify-end lg:justify-center">
                         <i class="fa-regular fa-eye"></i>
-                        <p class="text-sm font-bold text-gray-600 ml-2">300</p>
+                        <p class="text-sm font-bold text-gray-600 ml-2">${data.total_view ? data.total_view : "No Data Found"}</p>
                     </div>
                 </div>
                 <div class="text-center">
@@ -72,8 +77,8 @@ const displayLoadCatagory = (datas,catagoryName) =>{
                     </div>
                 </div>
                 <div class="text-right">
-                    <label for="my-modal-3">
-                        <i class="fa-solid fa-arrow-right-long text-blue-600 cursor-pointer"></i>
+                    <label onclick="loadModal('${data._id}')" for="my-modal-3" class="btn bg-indigo-700 modal-button">
+                        <i class="fa-solid fa-arrow-right-long text-white cursor-pointer"></i>
                     </label>
                 </div>
             </div>
@@ -81,9 +86,10 @@ const displayLoadCatagory = (datas,catagoryName) =>{
         `
         cardContainer.appendChild(divCard);
     });
-
+    //remove spinner
     displaySpinner(false);
 }
+// Spinner add function
 const displaySpinner = (showSpinner) =>{
     const spinner = document.getElementById('spinner');
     if(showSpinner === true){
@@ -93,5 +99,50 @@ const displaySpinner = (showSpinner) =>{
         spinner.classList.add('hidden');
     }
 }
+
+// modal data load
+const loadModal = async(newsId) =>{
+    const url = `https://openapi.programming-hero.com/api/news/${newsId}`;
+    try{
+        const res = await fetch(url);
+        const data = await res.json();
+        displayModalData(data);
+    }
+    catch(error){
+        console.log(error);
+    }
+}
+
+//dislplay modal data
+const displayModalData = (data) =>{
+    const modalContainer = document.getElementById('modal-container');
+    modalContainer.innerHTML = ' ';
+    const modalDiv = document.createElement('div');
+    modalDiv.classList.add('modal-box', 'relative', 'bg-white');
+    modalDiv.innerHTML = `
+        <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+        <img src="${data.data[0].image_url}" class="rounded-lg" alt="">
+        <h1 class="py-4 text-3xl font-bold text-black">${data.data[0].title}</h1>
+        <p class="py-4 text-black">${data.data[0].details}</p>
+        <div class="flex items-center justify-between">
+            <div class="flex-shrink-0">
+                <img class="w-8 h-8 rounded-full" src="${data.data[0].author.img}" alt="">
+            </div>
+            <div class="flex-1 min-w-0 pl-4">
+                <p class="text-sm font-medium text-gray-900">${data.data[0].author.name ? data.data[0].author.name : "No Data Found"}</p>
+                <p class="space-x-1 text-sm text-gray-500">${data.data[0].author.published_date}</p>
+            </div>
+            <div class="text-center">
+                <div class="flex items-center justify-end lg:justify-center">
+                    <i class="fa-regular fa-eye"></i>
+                    <p class="text-sm font-bold text-gray-600 ml-2">${data.data[0].total_view ? data.data[0].total_view : "No Data Found"}</p>
+                </div>
+            </div>
+        </div>
+    `
+    modalContainer.appendChild(modalDiv);
+}
+
+// default data load
 loadCatagory(1,'Breaking News');
 loadCatagories();
