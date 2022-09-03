@@ -1,9 +1,13 @@
 //catagory types data fetching
-const loadCatagories = () =>{
-    fetch('https://openapi.programming-hero.com/api/news/categories')
-    .then(res => res.json())
-    .then(data => displayCatagories(data.data.news_category))
-    .catch(error => console.log(error))
+const loadCatagories = async() =>{
+    try{
+        const res = await fetch('https://openapi.programming-hero.com/api/news/categories');
+        const data = await res.json();
+        displayCatagories(data.data.news_category);
+    }
+    catch(error){
+        console.log(error);
+    }
 }
 //display catagory
 const displayCatagories = (catagories) =>{
@@ -18,14 +22,18 @@ const displayCatagories = (catagories) =>{
 }
 
 //data fetching after selecting catagory type
-const loadCatagory = (id,catagoryName) =>{
+const loadCatagory = async(id,catagoryName) =>{
     //show spinner
     displaySpinner(true);
     const url = `https://openapi.programming-hero.com/api/news/category/0${id}`;
-    fetch(url)
-    .then(res => res.json())
-    .then(data => displayLoadCatagory(data.data,catagoryName))
-    .catch(error => console.log(error))
+    try{
+        const res = await fetch(url);
+        const data = await res.json();
+        displayLoadCatagory(data.data,catagoryName);
+    }
+    catch(error){
+        console.log(error);
+    }
 }
 
 //display news after selecting catagory type
