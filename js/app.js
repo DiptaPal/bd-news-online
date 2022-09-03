@@ -75,7 +75,7 @@ const displayLoadCatagory = (datas,catagoryName) =>{
                         <p class="text-sm font-bold text-gray-600 ml-2">${data.total_view ? data.total_view : "No Data Found"}</p>
                     </div>
                 </div>
-                <div class="">
+                <div>
                     <div class="text-base">
                         <i class="fa-regular fa-star-half-stroke"></i>
                         <i class="fa-regular fa-star"></i>
